@@ -1,16 +1,12 @@
-PROJECT = bitpair_cl
+PROJECT = smoothing_cl
 
-all: lib default
+all: default
 
-lib: 	
-	aoc -c -v $(PROJECT)_rtl.xml -o $(PROJECT)_rtl.aoco
-	aocl library create -o $(PROJECT)_rtl.aoclib $(PROJECT)_rtl.aoco
-	
-default:lib
-	aoc -g -v -l $(PROJECT)_rtl.aoclib -L . $(PROJECT).cl
+default:
+	aoc -g -v $(PROJECT).cl
 
-optm:	lib
-	aoc -g -v -c -l $(PROJECT)_rtl.aoclib -L . $(PROJECT).cl --report
+optm:
+	aoc -g -v -c $(PROJECT).cl --report
 	
 clean:
-	rm -rf *.aoco *.aoclib *.aocx $(PROJECT) $(PROJECT)_rtl
+	rm -rf *.aoco *.aocx $(PROJECT) $(PROJECT)_rtl
