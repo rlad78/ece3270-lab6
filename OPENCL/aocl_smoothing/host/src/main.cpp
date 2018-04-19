@@ -88,7 +88,7 @@ bool init_opencl() {
 
   	// Create the program for all device. Use the first device as the
   	// representative device (assuming all device are of the same type).
-  	std::string binary_file = getBoardBinaryFile("bitpair_cl", *device);
+  	std::string binary_file = getBoardBinaryFile("smoothing_cl", *device);
   	//printf("Using AOCX: %s\n", binary_file.c_str());
   	program = createProgramFromBinary(context, binary_file.c_str(), device, num_devices);
 
@@ -101,7 +101,7 @@ bool init_opencl() {
   	checkError(status, "Failed to create command queue");
 
   	// Kernel.
-  	const char *kernel_name = "bitpair_kernel";
+  	const char *kernel_name = "smoothing_kernel";
   	kernel = clCreateKernel(program, kernel_name, &status);
   	checkError(status, "Failed to create kernel");
 
