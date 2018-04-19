@@ -7,7 +7,7 @@ DUE APR 27TH
 This is what we're using for our Gaussian blur kernel:
 
 ```
-		| 1 2 1 |
+	| 1 2 1 |
 1/16 * 	| 2 4 2 |
-		| 1 2 1 |
+	| 1 2 1 |
 ```
