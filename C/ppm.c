@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
 
 	//open file and prepare mem
 	INPIC = fopen(argv[1],"r");
-	pnm_readpaminit(INPIC, &inpam, PAM_STRUCT_SIZE(tuple_type));
+	pnm_readpaminit(INPIC, &inpam, sizeof(INPIC));
 	imgdata_in = pnm_allocpamarray(&inpam);
 
 	return 0;
