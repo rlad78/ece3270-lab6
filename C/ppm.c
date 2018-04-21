@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <netpbm/pam.h>
+#include <pam.h>
 
 int main(int argc, char const *argv[])
 {
