@@ -15,7 +15,5 @@ int main(int argc, char const *argv[])
 	pnm_readpaminit(INPIC, &inpam, sizeof(INPIC));
 	imgdata_in = pnm_allocpamarray(&inpam);
 
-	pnm_freepamarray(imgdata_in, INPIC);
-
 	return 0;
 }
