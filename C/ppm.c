@@ -84,7 +84,18 @@ ppmimg * ppm_read(const char * filename){
 /* frees all data related to the given ppm struct
  */
 void ppm_free(ppmimg * ppmstruct){
+	int i,j,k;
 
+	for (i = 0; i < ppmstruct->height; i++)
+	{
+		for (j = 0; j < ppmstruct->width; j++)
+		{
+			free(ppmstruct->data[i][j]);
+		}
+		free(ppmstruct->data[i])
+	}
+	free(ppmstruct->data);
+	free(ppmstruct);
 }
 
 /* moves the file pointer past any whitespace
@@ -113,6 +124,8 @@ int main(int argc, char const *argv[])
 
 	printf("width = %u height = %u colormax = %u\n", 
 		in_img->width, in_img->height, in_img->colormax);
+
+	ppm_free(in_img);
 
 	return 0;
 }
