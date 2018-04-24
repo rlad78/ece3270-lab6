@@ -8,7 +8,7 @@ void eat_whitespace(FILE * F);
 
 /* opens ppm file and imports relevant data to a ppming struct
  */
-ppmimg * ppm_read(char * filename){
+ppmimg * ppm_read(const char * filename){
 	int i, temp_int;
 	char temp_string2[2];
 	ppmimg *ppm_out;

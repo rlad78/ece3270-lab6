@@ -8,7 +8,7 @@ typedef struct
 	char ***data;
 } ppmimg;
 
-ppmimg * ppm_read(char * filename);
+ppmimg * ppm_read(const char * filename);
 void ppm_free(ppmimg * ppmstruct);
 
 #endif
