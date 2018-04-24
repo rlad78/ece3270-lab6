@@ -122,8 +122,8 @@ int main(int argc, char const *argv[])
 
 	in_img = ppm_read(argv[1]);
 
-	printf("width = %u height = %u colormax = %u\n", 
-		in_img->width, in_img->height, in_img->colormax);
+	printf("width = %u height = %u colormax = %u\nfirst pixel = %c\n", 
+		in_img->width, in_img->height, in_img->colormax, in_img->data[0][0][0]);
 
 	ppm_free(in_img);
 
