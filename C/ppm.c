@@ -69,9 +69,18 @@ void eat_whitespace(FILE * F){
 // ## TESTING AREA ##
 int main(int argc, char const *argv[])
 {
-	// FILE *INPIC, *OUTPIC;
+	ppmimg *in_img;
 
+	if (argc < 2)
+	{
+		printf("Provide image filename!\n");
+		return -1;
+	}
 
+	in_img = ppm_read(argv[1]);
+
+	printf("width = %d height = %d colormax = %d\n", 
+		in_img->width, in_img->height, in_img->colormax);
 
 	return 0;
 }
