@@ -20,9 +20,9 @@ ppmimg * ppm_read(const char * filename){
 // ## READ HEADER INFO ##
 	ppm_file = fopen(filename,"r");
 
-	// check magic number
-	fread(temp_string2, sizeof(char), 2, ppm_file);
-	if (temp_string2[0] != 'P' || (temp_string2[1] != '6' && temp_string2[1] != '5'))
+	// check and store magic number
+	fread(&(ppm_out->magic), sizeof(char), 2, ppm_file);
+	if (ppm_out->magic[0] != 'P' || (ppm_out->magic[1] != '6' && ppm_out->magic[1] != '5'))
 	{
 		printf("%s is not a PPM image.\n", filename);
 		return 0;
@@ -43,7 +43,10 @@ ppmimg * ppm_read(const char * filename){
 
 // ## STORE DATA
 	// allocate space for data
-
+	for (int i = 0; i < count; ++i)
+	{
+		/* code */
+	}
 
 	// store data
 
