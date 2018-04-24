@@ -21,7 +21,7 @@ ppmimg * ppm_read(char * filename){
 	ppm_file = fopen(filename,"r");
 
 	// check magic number
-	fread(temp_string2, sizeof(char), 2, temp_string2);
+	fread(temp_string2, sizeof(char), 2, ppm_file);
 	if (temp_string2[0] != 'P' || (temp_string2[1] != '6' || temp_string2[1] != '5'))
 	{
 		printf("%s is not a PPM image.\n", filename);
