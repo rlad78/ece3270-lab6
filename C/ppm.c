@@ -10,19 +10,19 @@ void eat_whitespace(FILE * F);
  */
 ppmimg * ppm_read(const char * filename){
 	int i;
-	char temp_string2[2];
-	ppmimg *ppm_out;
+	ppmimg *ppm_obj;
 	FILE * ppm_file;
 
 	//allocate ppm struct
-	ppm_out = (ppmimg*) malloc(sizeof(ppmimg));
+	ppm_obj = (ppmimg*) malloc(sizeof(ppmimg));
 
 // ## READ HEADER INFO ##
 	ppm_file = fopen(filename,"r");
 
 	// check and store magic number
-	fread(&(ppm_out->magic), sizeof(char), 2, ppm_file);
-	if (ppm_out->magic[0] != 'P' || (ppm_out->magic[1] != '6' && ppm_out->magic[1] != '5'))
+	fread(&(ppm_obj->magic), sizeof(char), 2, ppm_file);
+	if (ppm_obj->magic[0] != 'P' || 
+		(ppm_obj->magic[1] != '6' && ppm_obj->magic[1] != '5'))
 	{
 		printf("%s is not a PPM image.\n", filename);
 		return 0;
@@ -30,27 +30,27 @@ ppmimg * ppm_read(const char * filename){
 	eat_whitespace(ppm_file);
 
 	// store width
-	fscanf(ppm_file, "%u", &(ppm_out->width));
+	fscanf(ppm_file, "%u", &(ppm_obj->width));
 	eat_whitespace(ppm_file);
 
 	// store height
-	fscanf(ppm_file, "%u", &(ppm_out->height));
+	fscanf(ppm_file, "%u", &(ppm_obj->height));
 	eat_whitespace(ppm_file);
 
 	// store colormax
-	fscanf(ppm_file, "%u", &(ppm_out->colormax));
+	fscanf(ppm_file, "%u", &(ppm_obj->colormax));
 	eat_whitespace(ppm_file);
 
 // ## STORE DATA
 	// allocate space for data
-	for (int i = 0; i < count; ++i)
+	for (int i = 0; i < ppm_obj->; ++i)
 	{
 		/* code */
 	}
 
 	// store data
 
-	return ppm_out;
+	return ppm_obj;
 }
 
 /* frees all data related to the given ppm struct
