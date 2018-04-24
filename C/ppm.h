@@ -7,6 +7,7 @@ typedef struct
 	char magic[2];
 	unsigned int height, width, colormax;
 	char ***data;
+	unsigned short bmult;
 } ppmimg;
 
 ppmimg * ppm_read(const char * filename);

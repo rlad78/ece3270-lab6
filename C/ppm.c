@@ -9,9 +9,10 @@ void eat_whitespace(FILE * F);
 /* opens ppm file and imports relevant data to a ppming struct
  */
 ppmimg * ppm_read(const char * filename){
-	int i;
+	int i, j, k;
 	ppmimg *ppm_obj;
 	FILE * ppm_file;
+	char ***picdata;
 
 	//allocate ppm struct
 	ppm_obj = (ppmimg*) malloc(sizeof(ppmimg));
@@ -41,15 +42,42 @@ ppmimg * ppm_read(const char * filename){
 	fscanf(ppm_file, "%u", &(ppm_obj->colormax));
 	eat_whitespace(ppm_file);
 
-// ## STORE DATA
-	// allocate space for data
-	for (int i = 0; i < ppm_obj->; ++i)
+	// determine bmult
+	if (ppm_obj->colormax > 0 && ppm_obj->colormax < 256)
 	{
-		/* code */
+		ppm_obj->bmult = 1;
+	}
+	else if (ppm_obj->colormax < 65536)
+	{
+		ppm_obj->bmult = 2;
+	}
+	else
+	{
+		printf("Invalid colormax of %u\n", ppm_obj->colormax);
+		return 0;
 	}
 
-	// store data
+// ## STORE DATA
+	// allocate space for data and store it
+	picdata = (char***) malloc(sizeof(char**)*ppm_obj->height);
+	for (i = 0; i < ppm_obj->height; i++)
+	{
+		picdata[i] = (char**) malloc(sizeof(char*)*ppm_obj->width);
+		for (j = 0; j < ppm_obj->width; j++)
+		{
+			picdata[i][j] = (char*) malloc(sizeof(char)*3*ppm_obj->bmult);
+			for (k = 0; k < 3; k++)
+			{
+				picdata[i][j][k*ppm_obj->bmult] = fgetc(ppm_file);
+				if(ppm_obj->bmult > 1) 
+				{
+					picdata[i][j][(k*ppm_obj->bmult)+1] = fgetc(ppm_file);
+				}
+			}
+		}
+	}
 
+	ppm_obj->data = picdata;
 	return ppm_obj;
 }
 
