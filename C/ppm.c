@@ -92,7 +92,7 @@ void ppm_free(ppmimg * ppmstruct){
 		{
 			free(ppmstruct->data[i][j]);
 		}
-		free(ppmstruct->data[i])
+		free(ppmstruct->data[i]);
 	}
 	free(ppmstruct->data);
 	free(ppmstruct);
