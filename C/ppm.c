@@ -1,12 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "ppm.h"
 
+// PRIVATE PROTOTYPES
+void eat_whitespace(FILE * F);
+
 /* opens ppm file and imports relevant data to a ppming struct
  */
-ppming * ppm_read(char * filename){
+ppmimg * ppm_read(char * filename){
 	int i, temp_int;
-	char[2] temp_string2;
+	char temp_string2[2];
 	ppmimg *ppm_out;
 	FILE * ppm_file;
 
@@ -17,7 +21,7 @@ ppming * ppm_read(char * filename){
 	ppm_file = fopen(filename,"r");
 
 	// check magic number
-	fread(temp_string2, sizeof(char), 2, ppm_out);
+	fread(temp_string2, sizeof(char), 2, temp_string2);
 	if (temp_string2[0] != 'P' || (temp_string2[1] != '6' || temp_string2[1] != '5'))
 	{
 		printf("%s is not a PPM image.\n", filename);
@@ -26,15 +30,15 @@ ppming * ppm_read(char * filename){
 	eat_whitespace(ppm_file);
 
 	// store width
-	fscanf(ppm_file, "%d", ppm_out->width);
+	fscanf(ppm_file, "%d", &(ppm_out->width));
 	eat_whitespace(ppm_file);
 
 	// store height
-	fscanf(ppm_file, "%d", ppm_out->height);
+	fscanf(ppm_file, "%d", &(ppm_out->height));
 	eat_whitespace(ppm_file);
 
 	// store colormax
-	fscanf(ppm_file, "%d", ppm_out->colormax);
+	fscanf(ppm_file, "%d", &(ppm_out->colormax));
 	eat_whitespace(ppm_file);
 
 // ## STORE DATA
