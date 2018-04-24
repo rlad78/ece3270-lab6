@@ -17,7 +17,7 @@ ppmimg * ppm_read(const char * filename){
 	//allocate ppm struct
 	ppm_obj = (ppmimg*) malloc(sizeof(ppmimg));
 
-// ## READ HEADER INFO ##
+	// ## READ HEADER INFO ##
 	ppm_file = fopen(filename,"r");
 
 	// check and store magic number
@@ -57,7 +57,7 @@ ppmimg * ppm_read(const char * filename){
 		return 0;
 	}
 
-// ## STORE DATA
+	// ## STORE DATA
 	// allocate space for data and store it
 	picdata = (char***) malloc(sizeof(char**)*ppm_obj->height);
 	for (i = 0; i < ppm_obj->height; i++)
