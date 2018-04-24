@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include "ppm.h"
 
 /* opens ppm file and imports relevant data to a ppming struct
@@ -12,17 +13,34 @@ ppming * ppm_read(char * filename){
 	//allocate ppm struct
 	ppm_out = (ppmimg*) malloc(sizeof(ppmimg));
 
-	//open file and read header info
-	ppm_file = fopen(argv[1],"r");
+// ## READ HEADER INFO ##
+	ppm_file = fopen(filename,"r");
+
+	// check magic number
 	fread(temp_string2, sizeof(char), 2, ppm_out);
-	if (temp_string2[0] != 'P' || temp_string2[1] != '6')
+	if (temp_string2[0] != 'P' || (temp_string2[1] != '6' || temp_string2[1] != '5'))
 	{
 		printf("%s is not a PPM image.\n", filename);
 		return 0;
 	}
-	fseek(ppm_out, 1, SEEK_CUR); // move past whitespace
+	eat_whitespace(ppm_file);
 
+	// store width
+	fscanf(ppm_file, "%d", ppm_out->width);
+	eat_whitespace(ppm_file);
 
+	// store height
+	fscanf(ppm_file, "%d", ppm_out->height);
+	eat_whitespace(ppm_file);
+
+	// store colormax
+	fscanf(ppm_file, "%d", ppm_out->colormax);
+	eat_whitespace(ppm_file);
+
+// ## STORE DATA
+	// allocate space for data
+
+	// store data
 
 	return ppm_out;
 }
@@ -33,12 +51,21 @@ void ppm_free(ppmimg * ppmstruct){
 
 }
 
-
+/* moves the file pointer past any whitespace
+*/
+void eat_whitespace(FILE * F){
+	char c;
+	do
+	{
+		c = fgetc(F);
+	} while (isspace(c));
+	fseek(F,-1,SEEK_CUR); //move pointer back once it's not whitespace
+}
 
 // ## TESTING AREA ##
 int main(int argc, char const *argv[])
 {
-	FILE *INPIC, *OUTPIC;
+	// FILE *INPIC, *OUTPIC;
 
 
 
