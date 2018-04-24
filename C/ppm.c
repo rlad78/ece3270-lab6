@@ -9,7 +9,7 @@ void eat_whitespace(FILE * F);
 /* opens ppm file and imports relevant data to a ppming struct
  */
 ppmimg * ppm_read(const char * filename){
-	int i, temp_int;
+	int i;
 	char temp_string2[2];
 	ppmimg *ppm_out;
 	FILE * ppm_file;
@@ -30,19 +30,20 @@ ppmimg * ppm_read(const char * filename){
 	eat_whitespace(ppm_file);
 
 	// store width
-	fscanf(ppm_file, "%d", &(ppm_out->width));
+	fscanf(ppm_file, "%u", &(ppm_out->width));
 	eat_whitespace(ppm_file);
 
 	// store height
-	fscanf(ppm_file, "%d", &(ppm_out->height));
+	fscanf(ppm_file, "%u", &(ppm_out->height));
 	eat_whitespace(ppm_file);
 
 	// store colormax
-	fscanf(ppm_file, "%d", &(ppm_out->colormax));
+	fscanf(ppm_file, "%u", &(ppm_out->colormax));
 	eat_whitespace(ppm_file);
 
 // ## STORE DATA
 	// allocate space for data
+
 
 	// store data
 
@@ -79,7 +80,7 @@ int main(int argc, char const *argv[])
 
 	in_img = ppm_read(argv[1]);
 
-	printf("width = %d height = %d colormax = %d\n", 
+	printf("width = %u height = %u colormax = %u\n", 
 		in_img->width, in_img->height, in_img->colormax);
 
 	return 0;

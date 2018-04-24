@@ -4,7 +4,8 @@
 typedef struct
 {
 	// char[255] name;
-	int height, width, colormax;
+	char magic[2];
+	unsigned int height, width, colormax;
 	char ***data;
 } ppmimg;
 
