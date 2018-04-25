@@ -146,7 +146,7 @@ ppmimg * ppm_copy(ppmimg * ppmstruct){
 	ppmimg *ppm_new;
 
 	ppm_new = ppm_header_copy(ppmstruct);
-	ppm_new->data = (char***) malloc(sizeof(char**)*ppm_new->height)
+	ppm_new->data = (char***) malloc(sizeof(char**)*ppm_new->height);
 	for (i = 0; i < ppm_new->height; i++)
 	{
 		ppm_new->data[i] = (char**) malloc(sizeof(char*)*ppm_new->width);
