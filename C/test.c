@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
 	}
 
 	in_img = ppm_read(argv[1]);
+	ppm_write(in_img, argv[2]);
 
 	printf("width = %u height = %u colormax = %u\nfirst pixel = %c\n", 
 		in_img->width, in_img->height, in_img->colormax, in_img->data[0][0][0]);
