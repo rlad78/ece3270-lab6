@@ -56,7 +56,7 @@ const char BOX_ARR[5][5] =
 		{0,0,0,0,0},
 	};
 
-const char GAUSS2_ARR[5][5] =
+const char GAUSS1_ARR[5][5] =
 	{
 		{0,0,0,0,0},
 		{0,1,2,1,0},
@@ -83,5 +83,14 @@ const char UNSHARP_ARR[5][5] =
 		{1,4,6,4,1},
 	};
 
+ const float IDENTITY_CONST = 0;
+ const float EDGE1_CONST = 0;
+ const float EDGE2_CONST = 0;
+ const float EDGE3_CONST = 0;
+ const float SHARPEN_CONST = 0;
+ const float BOX_CONST = 1/9;
+ const float GAUSS1_CONST = 1/16;
+ const float GAUSS2_CONST = 1/256;
+ const float UNSHARP_CONST = -1/256;
 
 #endif
