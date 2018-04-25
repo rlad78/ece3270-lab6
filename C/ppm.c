@@ -130,13 +130,42 @@ ppmimg * ppm_header_copy(ppmimg * ppmstruct){
 	ppmimg *ppm_new;
 
 	ppm_new = (ppmimg*) malloc(sizeof(ppmimg));
+	ppm_new->type = ppmstruct->type;
+	ppm_new->height = ppmstruct->height;
+	ppm_new->width = ppmstruct->width;
+	ppm_new->colormax = ppmstruct->colormax;
+	ppm_new->bmult = ppmstruct->bmult;
 
+	return ppm_new;
 }
 
 /* outputs a new copy of ppmstruct
  */
 ppmimg * ppm_copy(ppmimg * ppmstruct){
-	/* code */
+	int i,j,k;
+	ppmimg *ppm_new;
+
+	ppm_new = ppm_header_copy(ppmstruct);
+	ppm_new->data = (char***) malloc(sizeof(char**)*ppm_new->height)
+	for (i = 0; i < ppm_new->height; i++)
+	{
+		ppm_new->data[i] = (char**) malloc(sizeof(char*)*ppm_new->width);
+		for (j = 0; j < ppm_new->width; j++)
+		{
+			ppm_new->data[i][j] = (char*) malloc(sizeof(char)*3*ppm_new->bmult);
+			for (k = 0; k < 3; k++)
+			{
+				ppm_new->data[i][j][k*ppm_new->bmult] = ppmstruct->data[i][j][k*ppmstruct->bmult];
+				if(ppm_new->bmult > 1) 
+				{
+					ppm_new->data[i][j][(k*ppm_new->bmult)+1] = ppmstruct->data[i][j][(k*ppmstruct->bmult)+1];
+				}
+			}
+		}
+	}
+
+	return ppm_new;
+
 }
 
 // ######################
@@ -152,12 +181,6 @@ void eat_whitespace(FILE * F){
 		c = fgetc(F);
 	} while (isspace(c));
 	fseek(F,-1,SEEK_CUR); //move pointer back once it's not whitespace
-}
-
-/* 
- */
-enum format determine_format(char *maigc_num){
-	/* code */
 }
 
 // ##########
