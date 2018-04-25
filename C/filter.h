@@ -85,7 +85,7 @@ const float MOD_ARR[8] = {
 	1/9,
 	1/16,
 	1/256
-}
+};
 
 enum filter
 {
