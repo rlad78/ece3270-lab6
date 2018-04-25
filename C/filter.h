@@ -74,7 +74,7 @@ const char GAUSS2_ARR[5][5] =
 		{1,4,6,4,1},
 	};
 
-const char **MASK_ARR[8] = {
+const char ***MASK_ARR[8] = {
 	IDENTITY_ARR,
 	EDGE1_ARR,
 	EDGE2_ARR,
