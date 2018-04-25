@@ -72,7 +72,7 @@ ppmimg * ppm_read(const char * filename){
 		return 0;
 	}
 
-	// ## STORE DATA
+	// ## STORE DATA ##
 	// allocate space for data and store it
 	picdata = (char***) malloc(sizeof(char**)*ppm_obj->height);
 	for (i = 0; i < ppm_obj->height; i++)
