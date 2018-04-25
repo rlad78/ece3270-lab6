@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "ppm.h"
+#include "filter.h"
 
 int main(int argc, char const *argv[])
 {
