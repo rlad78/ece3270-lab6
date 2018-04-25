@@ -1,6 +1,6 @@
 CC=gcc
-DEPS = ppm.h
-OBJS = ppm.o test.o
+DEPS = ppm.h filter.h
+OBJS = ppm.o test.o filter.o
 CFLAGS = 
 
 default: run clean
