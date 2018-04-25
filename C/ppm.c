@@ -102,8 +102,35 @@ ppmimg * ppm_read(const char * filename){
  */
 void ppm_write(ppmimg * ppmstruct, char *filename){
 	FILE *ppm_file;
+	ppm_file = fopen(filename, "w");
 
+	// write magic number, then whitespace
+	fputc(ppmstruct->magic[0], ppm_file);
+	fputc(ppmstruct->magic[1], ppm_file);
+	fputc('\n', ppm_file);
 
+	// write the rest of the header
+	fprintf(ppm_file, "%d\n%d\n%d\n", 
+		ppmstruct->width, ppmstruct->height, ppmstruct->colormax);	
+
+	// write the data
+	for (i = 0; i < ppmstruct->height; i++)
+	{
+		for (j = 0; j < ppmstruct->width; j++)
+		{
+			for (k = 0; k < 3; k++)
+			{
+				fputc(ppmstruct->data[i][j][k*ppmstruct->bmult], ppm_file);
+				if(ppmstruct->bmult > 1) 
+				{
+					fputc(ppmstruct->data[i][j][(k*ppmstruct->bmult)+1], ppm_file);
+				}
+			}
+		}
+	}
+
+	fclose(ppm_file)
+	return 0;
 }
 
 /* frees all data related to the given ppm struct
