@@ -26,8 +26,7 @@ ppmimg * ppm_read(const char * filename){
 
 	// check and store magic number
 	fread(&(ppm_obj->magic), sizeof(char), 2, ppm_file);
-	if (ppm_obj->magic[0] != 'P' || 
-		(ppm_obj->magic[1] != '6' && ppm_obj->magic[1] != '5'))
+	if (ppm_obj->magic[0] != 'P' || ppm_obj->magic[1] != '6')
 	{
 		printf("%s is not a PPM image.\n", filename);
 		return 0;
