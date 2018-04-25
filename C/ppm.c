@@ -160,6 +160,9 @@ ppmimg * ppm_header_copy(ppmimg * ppmstruct){
 	ppm_new->type = ppmstruct->type;
 	ppm_new->magic[0] = ppmstruct->magic[0];
 	ppm_new->magic[1] = ppmstruct->magic[1];
+
+	printf("%c%c\n%c%c\n",
+		ppm_new->magic[0],ppm_new->magic[1],ppmstruct->magic[0],ppmstruct->magic[1]);
 	ppm_new->height = ppmstruct->height;
 	ppm_new->width = ppmstruct->width;
 	ppm_new->colormax = ppmstruct->colormax;
