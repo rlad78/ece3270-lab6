@@ -3,8 +3,12 @@
 #include <ctype.h>
 #include "ppm.h"
 
-// PRIVATE PROTOTYPES
+// HELPER PROTOTYPES
 void eat_whitespace(FILE * F);
+
+// ######################
+// ## MODULE FUNCTIONS ##
+// ######################
 
 /* opens ppm file and imports relevant data to a ppming struct
  */
@@ -42,14 +46,26 @@ ppmimg * ppm_read(const char * filename){
 	fscanf(ppm_file, "%u", &(ppm_obj->colormax));
 	eat_whitespace(ppm_file);
 
-	// determine bmult
+	// determine bmult and format
 	if (ppm_obj->colormax > 0 && ppm_obj->colormax < 256)
 	{
 		ppm_obj->bmult = 1;
+		switch(ppm_obj->magic[1])
+		{
+			case '5': ppm_obj->type = BW; break;
+			case '6': ppm_obj->type = RGB; break;
+			default: printf("WARNING: Invalid type\n");
+		}
 	}
 	else if (ppm_obj->colormax < 65536)
 	{
 		ppm_obj->bmult = 2;
+		switch(ppm_obj->magic[1])
+		{
+			case '5': ppm_obj->type = sBW; break;
+			case '6': ppm_obj->type = sRGB; break;
+			default: printf("WARNING: Invalid type\n");
+		}
 	}
 	else
 	{
@@ -83,10 +99,12 @@ ppmimg * ppm_read(const char * filename){
 	return ppm_obj;
 }
 
-/* 
+/* i mean it does what it says it does
  */
 void ppm_write(ppmimg * ppmstruct, char *filename){
-	/* code */
+	FILE *ppm_file;
+
+
 }
 
 /* frees all data related to the given ppm struct
@@ -106,6 +124,25 @@ void ppm_free(ppmimg * ppmstruct){
 	free(ppmstruct);
 }
 
+/* outputs a new copy of ppmstruct but only with header elements
+ */
+ppmimg * ppm_header_copy(ppmimg * ppmstruct){
+	ppmimg *ppm_new;
+
+	ppm_new = (ppmimg*) malloc(sizeof(ppmimg));
+
+}
+
+/* outputs a new copy of ppmstruct
+ */
+ppmimg * ppm_copy(ppmimg * ppmstruct){
+	/* code */
+}
+
+// ######################
+// ## HELPER FUNCTIONS ##
+// ######################
+
 /* moves the file pointer past any whitespace
 */
 void eat_whitespace(FILE * F){
@@ -116,6 +153,16 @@ void eat_whitespace(FILE * F){
 	} while (isspace(c));
 	fseek(F,-1,SEEK_CUR); //move pointer back once it's not whitespace
 }
+
+/* 
+ */
+enum format determine_format(char *maigc_num){
+	/* code */
+}
+
+// ##########
+// ## MAIN ##
+// ##########
 
 // ## TESTING AREA ##
 int main(int argc, char const *argv[])
