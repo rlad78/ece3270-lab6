@@ -131,7 +131,7 @@ void ppm_write(ppmimg * ppmstruct, char *filename){
 	}
 
 	fclose(ppm_file);
-	return 0;
+	return;
 }
 
 /* frees all data related to the given ppm struct
