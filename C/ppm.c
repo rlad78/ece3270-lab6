@@ -100,7 +100,7 @@ ppmimg * ppm_read(const char * filename){
 
 /* i mean it does what it says it does
  */
-void ppm_write(ppmimg * ppmstruct, char *filename){
+void ppm_write(ppmimg * ppmstruct, const char *filename){
 	int i,j,k;
 	FILE *ppm_file;
 	ppm_file = fopen(filename, "w");
