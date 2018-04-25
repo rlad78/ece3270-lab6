@@ -215,23 +215,23 @@ void eat_whitespace(FILE * F){
 // ##########
 
 // ## TESTING AREA ##
-int main(int argc, char const *argv[])
-{
-	ppmimg *in_img;
+// int main(int argc, char const *argv[])
+// {
+// 	ppmimg *in_img;
 
-	if (argc < 2)
-	{
-		printf("Provide image filename!\n");
-		return -1;
-	}
+// 	if (argc < 2)
+// 	{
+// 		printf("Provide image filename!\n");
+// 		return -1;
+// 	}
 
-	in_img = ppm_read(argv[1]);
+// 	in_img = ppm_read(argv[1]);
 
-	printf("width = %u height = %u colormax = %u\nfirst pixel = %c\n", 
-		in_img->width, in_img->height, in_img->colormax, in_img->data[0][0][0]);
+// 	printf("width = %u height = %u colormax = %u\nfirst pixel = %c\n", 
+// 		in_img->width, in_img->height, in_img->colormax, in_img->data[0][0][0]);
 
-	ppm_free(in_img);
+// 	ppm_free(in_img);
 
-	return 0;
-}
+// 	return 0;
+// }
 
