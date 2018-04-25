@@ -130,7 +130,7 @@ void ppm_write(ppmimg * ppmstruct, char *filename){
 		}
 	}
 
-	fclose(ppm_file)
+	fclose(ppm_file);
 	return 0;
 }
 
