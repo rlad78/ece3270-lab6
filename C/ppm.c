@@ -209,29 +209,3 @@ void eat_whitespace(FILE * F){
 	} while (isspace(c));
 	fseek(F,-1,SEEK_CUR); //move pointer back once it's not whitespace
 }
-
-// ##########
-// ## MAIN ##
-// ##########
-
-// ## TESTING AREA ##
-// int main(int argc, char const *argv[])
-// {
-// 	ppmimg *in_img;
-
-// 	if (argc < 2)
-// 	{
-// 		printf("Provide image filename!\n");
-// 		return -1;
-// 	}
-
-// 	in_img = ppm_read(argv[1]);
-
-// 	printf("width = %u height = %u colormax = %u\nfirst pixel = %c\n", 
-// 		in_img->width, in_img->height, in_img->colormax, in_img->data[0][0][0]);
-
-// 	ppm_free(in_img);
-
-// 	return 0;
-// }
-
