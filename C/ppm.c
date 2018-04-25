@@ -77,8 +77,16 @@ ppmimg * ppm_read(const char * filename){
 		}
 	}
 
+	fclose(ppm_file);
+
 	ppm_obj->data = picdata;
 	return ppm_obj;
+}
+
+/* 
+ */
+void ppm_write(ppmimg * ppmstruct, char *filename){
+	/* code */
 }
 
 /* frees all data related to the given ppm struct

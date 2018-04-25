@@ -11,6 +11,7 @@ typedef struct
 } ppmimg;
 
 ppmimg * ppm_read(const char * filename);
+void ppm_write(ppmimg * ppmstruct, char *filename);
 void ppm_free(ppmimg * ppmstruct);
 
 #endif
