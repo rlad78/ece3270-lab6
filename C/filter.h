@@ -74,23 +74,38 @@ const char GAUSS2_ARR[5][5] =
 		{1,4,6,4,1},
 	};
 
-const char UNSHARP_ARR[5][5] =
-	{
-		{1,4,6,4,1},
-		{4,16,24,16,4},
-		{6,24,-476,24,6},
-		{4,16,24,16,4},
-		{1,4,6,4,1},
-	};
+const char **MASK_ARR[8] = {
+	IDENTITY_ARR,
+	EDGE1_ARR,
+	EDGE2_ARR,
+	EDGE3_ARR,
+	SHARPEN_ARR,
+	BOX_ARR,
+	GAUSS1_ARR,
+	GAUSS2_ARR
+};
 
- const float IDENTITY_CONST = 0;
- const float EDGE1_CONST = 0;
- const float EDGE2_CONST = 0;
- const float EDGE3_CONST = 0;
- const float SHARPEN_CONST = 0;
- const float BOX_CONST = 1/9;
- const float GAUSS1_CONST = 1/16;
- const float GAUSS2_CONST = 1/256;
- const float UNSHARP_CONST = -1/256;
+const float MOD_ARR[8] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	1/9,
+	1/16,
+	1/256
+}
+
+enum filter
+{
+	IDENTITY,
+	EDGE1,
+	EDGE2,
+	EDGE3,
+	SHARPEN,
+	BOX,
+	GAUSS1,
+	GAUSS2,
+};
 
 #endif
