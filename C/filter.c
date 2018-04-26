@@ -97,6 +97,6 @@ const float MOD_ARR[8] = {
 
 /* 
  */
-void filter_image(ppmimg *img){
-	/* code */
+void filter_image(ppmimg *img, enum filter ftr){
+	
 }
