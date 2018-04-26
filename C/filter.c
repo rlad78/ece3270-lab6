@@ -4,6 +4,7 @@
 
 // private function prototypes
 float ** matrix_convolude(float **m1, float **m2);
+float ** matrix_multiply_constant(float **FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
 float ** matrix_edge_handling(char **CM);
@@ -120,6 +121,12 @@ void filter_image(ppmimg *img, enum filter ftr){
 /* 
  */
 float ** matrix_convolude(float **m1, float **m2){
+	
+}
+
+/* 
+ */
+float ** matrix_multiply_constant(float **FM, float f){
 	
 }
 
