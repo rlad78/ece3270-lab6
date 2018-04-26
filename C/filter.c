@@ -125,13 +125,37 @@ char ** matrix_convolude(char **m1, char **m2){
 /* 
  */
 float ** matrix_char2float(char **CM){
-	
+	int i,j;
+	float **FM;
+
+	FM = (float**) malloc(sizeof(float*)*5);
+	for (i = 0; i < 5; i++)
+	{
+		PM[i] = (float*) malloc(sizeof(float)*5);
+		for (j = 0; j < 5; j++)
+		{
+			PM[i][j] = (float)CM[i][j];
+		}
+	}
+
+	return FM;
 }
 
 /* 
  */
 char ** matrix_float2char(float **FM){
-	
+	int i,j;
+	char **CM;
+
+	CM = (char**) malloc(sizeof(char*)*5);
+	for (i = 0; i < 5; i++)
+	{
+		CM[i] = (char*) malloc(sizeof(char)*5);
+		for (j = 0; j < 5; j++)
+		{
+			CM[i][j]
+		}
+	}
 }
 
 /* 
