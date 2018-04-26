@@ -3,7 +3,7 @@
 #include "ppm.h"
 
 // private function prototypes
-float ** matrix_convolude(float **m1, float **m2);
+float matrix_convolude(float **m1, float **m2);
 void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
@@ -120,8 +120,19 @@ void filter_image(ppmimg *img, enum filter ftr){
 
 /* 
  */
-float ** matrix_convolude(float **m1, float **m2){
-	
+float matrix_convolude(float **m1, float **m2){
+	int i,j;
+	float sum = 0;
+
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			sum += m1[i][j] * m2[4-i][4-j];
+		}
+	}
+
+	return sum;
 }
 
 /* 
