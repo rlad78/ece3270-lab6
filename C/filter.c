@@ -217,13 +217,23 @@ void matirx_store(char **CM, ppmimg *img, int x, int y, int color){
 /* 
  */
 void matrix_free_CM(char **CM){
-	
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		free(CM[i]);
+	}
+	free(CM);
 }
 
 /* 
  */
 void matrix_free_FM(float **FM){
-	
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		free(FM[i]);
+	}
+	free(FM);
 }
 
 /* 
