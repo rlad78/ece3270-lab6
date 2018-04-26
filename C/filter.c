@@ -14,7 +14,7 @@ void matrix_free_CM(char **CM);
 void matrix_free_FM(float **FM);
 char value_float2char(float f);
 char isInImage(ppmimg *img, int n, int m);
-char findNearestPixel(ppmimg *img, int n, int m, color);
+char findNearestPixel(ppmimg *img, int n, int m, int color);
 
 // #################
 // ## GLOBAL VARS ##
