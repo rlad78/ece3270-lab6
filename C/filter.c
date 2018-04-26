@@ -7,6 +7,7 @@ float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
 float ** matrix_edge_handling(char **CM);
 char ** matrix_extract5(int x, int y, ppmimg *img);
+void matirx_store(char **CM, ppmimg *img);
 
 // #################
 // ## GLOBAL VARS ##
@@ -139,5 +140,11 @@ float ** matrix_edge_handling(char **CM){
 /* 
  */
 char ** matrix_extract5(int x, int y, ppmimg *img){
+	
+}
+
+/* 
+ */
+void matirx_store(char **CM, ppmimg *img){
 	
 }
