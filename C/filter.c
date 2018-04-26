@@ -9,6 +9,8 @@ char ** matrix_float2char(float **FM);
 float ** matrix_edge_handling(char **CM);
 char ** matrix_extract5(ppmimg *img, int x, int y, int color);
 void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
+void matrix_free_CM(char **CM);
+void matrix_free_FM(float **FM);
 
 // #################
 // ## GLOBAL VARS ##
@@ -169,4 +171,17 @@ void matirx_store(char **CM, ppmimg *img, int x, int y, int color){
 			img->data[i+x][j+y][color] = CM[i][j];
 		}
 	}
+}
+
+
+/* 
+ */
+void matrix_free_CM(char **CM){
+	
+}
+
+/* 
+ */
+void matrix_free_FM(float **FM){
+	
 }
