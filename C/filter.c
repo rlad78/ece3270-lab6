@@ -139,10 +139,10 @@ float ** matrix_char2float(char **CM){
 	FM = (float**) malloc(sizeof(float*)*5);
 	for (i = 0; i < 5; i++)
 	{
-		PM[i] = (float*) malloc(sizeof(float)*5);
+		FM[i] = (float*) malloc(sizeof(float)*5);
 		for (j = 0; j < 5; j++)
 		{
-			PM[i][j] = (float)CM[i][j];
+			FM[i][j] = (float)CM[i][j];
 		}
 	}
 
@@ -225,7 +225,7 @@ char value_float2char(float f){
 	{
 		return 255;
 	}
-	else if (f =< 0)
+	else if (f <= 0)
 	{
 		return 0;
 	}
