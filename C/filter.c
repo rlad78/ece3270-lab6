@@ -139,12 +139,20 @@ float ** matrix_edge_handling(char **CM){
 
 /* 
  */
-char ** matrix_extract5(ppmimg *img, int x, int y){
+char ** matrix_extract5(ppmimg *img, int x, int y, int color){
 	
 }
 
 /* 
  */
-void matirx_store(char **CM, ppmimg *img, int x, int y){
-	
+void matirx_store(char **CM, ppmimg *img, int x, int y, int color){
+	int i,j;
+
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			img->data[i+x][j+y][color] = CM[i][j];
+		}
+	}
 }
