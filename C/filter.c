@@ -221,5 +221,16 @@ void matrix_free_FM(float **FM){
 /* 
  */
 char value_float2char(float f){
-	
+	if (f >= 255)
+	{
+		return 255;
+	}
+	else if (f =< 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return (int)f;
+	}
 }
