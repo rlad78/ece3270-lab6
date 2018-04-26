@@ -188,7 +188,20 @@ char ** matrix_float2char(float **FM){
 /* [x,y] should be the CENTROID
  */
 float ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
-	
+	int i,j;
+	float **f_out;
+
+	// load all data that can be loaded
+	f_out = (float**) malloc(sizeof(float*)*5);
+	for (int i = 0; i < 5; i++)
+	{
+		f_out[i] = (float*) malloc(sizeof(float)*5);
+		for (int j = 0; j < 5; j++)
+		{
+
+		}
+	}
+
 }
 
 /* 
