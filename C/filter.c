@@ -7,7 +7,7 @@ float matrix_convolude(float **m1, float **m2);
 void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
-float ** matrix_edge_handling(char **CM);
+float ** matrix_edge_handling(ppmimg *img, int x, int y, int color);
 char ** matrix_extract5(ppmimg *img, int x, int y, int color);
 void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
 void matrix_free_CM(char **CM);
@@ -185,9 +185,9 @@ char ** matrix_float2char(float **FM){
 	}
 }
 
-/* 
+/* [x,y] should be the CENTROID
  */
-float ** matrix_edge_handling(char **CM){
+float ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
 	
 }
 
