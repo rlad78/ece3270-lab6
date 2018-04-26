@@ -7,8 +7,8 @@ float matrix_convolude(float **m1, float **m2);
 void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
-char ** matrix_edge_handling(ppmimg *img, int x, int y, int color);
-char ** matrix_extract5(ppmimg *img, int x, int y, int color);
+char ** matrix_get_image_nibble(ppmimg *img, int x, int y, int color);
+// char ** matrix_extract5(ppmimg *img, int x, int y, int color);
 void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
 void matrix_free_CM(char **CM);
 void matrix_free_FM(float **FM);
@@ -20,7 +20,7 @@ char findNearestPixel(ppmimg *img, int n, int m, int color);
 // ## GLOBAL VARS ##
 // #################
 
-const char MASK_ARR[8][5][5] = {
+const float MASK_ARR[8][5][5] = {
 //IDENTITY_ARR
 	{
 		{0,0,0,0,0},
@@ -113,7 +113,26 @@ const float MOD_ARR[8] = {
 /* 
  */
 void filter_image(ppmimg *img, enum filter ftr){
-	
+	int i,j,k;
+	ppmimg *img_filtered;
+	float **f_matrix;
+	char **c_matrix;
+
+	img_filtered = ppm_copy(img);
+
+	for (i = 0; i < img_filtered->height; i++)
+	{
+		for (j = 0; j < img_filtered->width; j++)
+		{
+			for (k = 0; k < 3; k++)
+			{
+				c_matrix = matrix_get_image_nibble(img,j,i,k);
+				f_matrix = matrix_char2float(c_matrix);
+				matrix_free_CM(c_matrix);
+				
+			}
+		}
+	}
 }
 
 // #######################
@@ -189,7 +208,7 @@ char ** matrix_float2char(float **FM){
 
 /* [x,y] should be the CENTROID
  */
-char ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
+char ** matrix_get_image_nibble(ppmimg *img, int x, int y, int color){
 	int i,j;
 	char **c_out;
 
@@ -280,22 +299,22 @@ char findNearestPixel(ppmimg *img, int n, int m, int color){
 
 /* 
  */
-char ** matrix_extract5(ppmimg *img, int x, int y, int color){
-	int i,j;
-	char **m_out;
+// char ** matrix_extract5(ppmimg *img, int x, int y, int color){
+// 	int i,j;
+// 	char **m_out;
 
-	m_out = (char**) malloc(sizeof(char*)*5);
-	for (i = 0; i < 5; i++)
-	{
-		m_out[i] = (char*) malloc(sizeof(char)*5);
-		for (j = 0; j < 5; j++)
-		{
-			m_out[i][j] = img->data[x+i][y+j][color];
-		}
-	}
+// 	m_out = (char**) malloc(sizeof(char*)*5);
+// 	for (i = 0; i < 5; i++)
+// 	{
+// 		m_out[i] = (char*) malloc(sizeof(char)*5);
+// 		for (j = 0; j < 5; j++)
+// 		{
+// 			m_out[i][j] = img->data[x+i][y+j][color];
+// 		}
+// 	}
 
-	return m_out;
-}
+// 	return m_out;
+// }
 
 /* 
  */
