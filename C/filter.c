@@ -4,7 +4,7 @@
 
 // private function prototypes
 float ** matrix_convolude(float **m1, float **m2);
-float ** matrix_multiply_constant(float **FM, float f);
+void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
 float ** matrix_edge_handling(char **CM);
@@ -126,8 +126,16 @@ float ** matrix_convolude(float **m1, float **m2){
 
 /* 
  */
-float ** matrix_multiply_constant(float **FM, float f){
-	
+void matrix_multiply_constant(float ***FM, float f){
+	int i,j;
+
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			*(FM)[i][j] *= f;
+		}
+	}
 }
 
 /* 
