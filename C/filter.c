@@ -11,6 +11,7 @@ char ** matrix_extract5(ppmimg *img, int x, int y, int color);
 void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
 void matrix_free_CM(char **CM);
 void matrix_free_FM(float **FM);
+char value_float2char(float f);
 
 // #################
 // ## GLOBAL VARS ##
@@ -153,7 +154,7 @@ char ** matrix_float2char(float **FM){
 		CM[i] = (char*) malloc(sizeof(char)*5);
 		for (j = 0; j < 5; j++)
 		{
-			CM[i][j]
+			CM[i][j] = value_float2char(FM[i][j]);
 		}
 	}
 }
@@ -207,5 +208,11 @@ void matrix_free_CM(char **CM){
 /* 
  */
 void matrix_free_FM(float **FM){
+	
+}
+
+/* 
+ */
+char value_float2char(float f){
 	
 }
