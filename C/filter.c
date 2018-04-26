@@ -91,18 +91,6 @@ const float MOD_ARR[8] = {
 	1/256
 };
 
-enum filter
-{
-	IDENTITY,
-	EDGE1,
-	EDGE2,
-	EDGE3,
-	SHARPEN,
-	BOX,
-	GAUSS1,
-	GAUSS2,
-};
-
 // ######################
 // ## PUBLIC FUNCTIONS ##
 // ######################
