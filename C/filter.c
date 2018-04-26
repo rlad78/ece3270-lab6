@@ -13,6 +13,8 @@ void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
 void matrix_free_CM(char **CM);
 void matrix_free_FM(float **FM);
 char value_float2char(float f);
+char isInImage(ppmimg *img, int n, int m);
+char findNearestPixel(ppmimg *img, int n, int m, color);
 
 // #################
 // ## GLOBAL VARS ##
@@ -187,19 +189,91 @@ char ** matrix_float2char(float **FM){
 
 /* [x,y] should be the CENTROID
  */
-float ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
+char ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
 	int i,j;
-	float **f_out;
+	char **c_out;
 
-	// load all data that can be loaded
-	f_out = (float**) malloc(sizeof(float*)*5);
+	c_out = (char**) malloc(sizeof(char*)*5);
 	for (int i = 0; i < 5; i++)
 	{
-		f_out[i] = (float*) malloc(sizeof(float)*5);
+		c_out[i] = (char*) malloc(sizeof(char)*5);
 		for (int j = 0; j < 5; j++)
 		{
-
+			if(isInImage(img,(x-2)+i,(y-2)+j) == 1)
+			{
+				c_out[i][j] = img->data[(x-2)+i][(y-2)+j];
+			}
+			else
+			{
+				c_out[i][j] = findNearestPixel(img,(x-2)+i,(y-2)+j,color);
+			}
 		}
+	}
+
+	return c_out;
+
+}
+
+/* 
+ */
+char isInImage(ppmimg *img, int n, int m){
+	if (n >= 0 && n < img->width && m >= 0 && n < img->height)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+/* 
+ */
+char findNearestPixel(ppmimg *img, int n, int m, color){
+	// left side
+	if (n < 0)
+	{
+		// left-top-corner
+		if (m < 0)
+		{
+			return img->data[0][0][color];
+		}
+		// left-bottom-corner
+		else if (m > img->height-1)
+		{
+			return img->data[img->height-1][0][color];
+		}
+		// left-side
+		else
+		{
+			return img->data[m][0][color];
+		}
+	}
+	// right side
+	else if (n > img->width-1)
+	{
+		// right-top-corner
+		if (m < 0)
+		{
+			return img->data[0][img->width-1][color];
+		}
+		// right-bottom-corner
+		else if (m > img->height)
+		{
+			return img->data[img->height-1][img->width-1][color];
+		}
+		// right-side
+		else
+		{
+			return img->data[m][img->width-1][color];
+		}
+	}
+	// top
+	else if (m < 0)
+	{
+		return img->data[0][n][color];
+	}
+	// bottom
+	else
+	{
+		return img->data[img->height][n][color];
 	}
 
 }
