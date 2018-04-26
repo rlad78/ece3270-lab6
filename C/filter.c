@@ -118,7 +118,7 @@ void filter_image(ppmimg *img, enum filter ftr){
 
 /* 
  */
-char ** matrix_convolude(char **m1, char **m2){
+float ** matrix_convolude(float **m1, float **m2){
 	
 }
 
