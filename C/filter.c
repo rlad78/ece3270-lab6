@@ -140,7 +140,20 @@ float ** matrix_edge_handling(char **CM){
 /* 
  */
 char ** matrix_extract5(ppmimg *img, int x, int y, int color){
-	
+	int i,j;
+	char **m_out;
+
+	m_out = (char**) malloc(sizeof(char*)*5);
+	for (i = 0; i < 5; i++)
+	{
+		m_out[i] = (char*) malloc(sizeof(char)*5);
+		for (j = 0; j < 5; j++)
+		{
+			m_out[i][j] = img->data[x+i][y+j][color];
+		}
+	}
+
+	return m_out;
 }
 
 /* 
