@@ -4,7 +4,7 @@
 #include "ppm.h"
 
 // global vars
-extern const char MASK_ARR[8][5][5];
+extern const float MASK_ARR[8][5][5];
 extern const float MOD_ARR[8];
 
 // declarations
