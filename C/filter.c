@@ -1,6 +1,11 @@
 #include "filter.h"
 #include "ppm.h"
 
+// private function prototypes
+char ** matrix_convolude(char **m1, char **m2);
+float ** matrix_char2float(char **CM);
+char ** matrix_float2char(float **FM);
+
 // #################
 // ## GLOBAL VARS ##
 // #################
@@ -98,5 +103,27 @@ const float MOD_ARR[8] = {
 /* 
  */
 void filter_image(ppmimg *img, enum filter ftr){
+	
+}
+
+// #######################
+// ## PRIVATE FUNCTIONS ##
+// #######################
+
+/* 
+ */
+char ** matrix_convolude(char **m1, char **m2){
+	
+}
+
+/* 
+ */
+float ** matrix_char2float(char **CM){
+	
+}
+
+/* 
+ */
+char ** matrix_float2char(float **FM){
 	
 }
