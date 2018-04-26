@@ -7,7 +7,7 @@ float matrix_convolude(float **m1, float **m2);
 void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
-float ** matrix_edge_handling(ppmimg *img, int x, int y, int color);
+char ** matrix_edge_handling(ppmimg *img, int x, int y, int color);
 char ** matrix_extract5(ppmimg *img, int x, int y, int color);
 void matirx_store(char **CM, ppmimg *img, int x, int y, int color);
 void matrix_free_CM(char **CM);
@@ -194,14 +194,14 @@ char ** matrix_edge_handling(ppmimg *img, int x, int y, int color){
 	char **c_out;
 
 	c_out = (char**) malloc(sizeof(char*)*5);
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		c_out[i] = (char*) malloc(sizeof(char)*5);
-		for (int j = 0; j < 5; j++)
+		for (j = 0; j < 5; j++)
 		{
 			if(isInImage(img,(x-2)+i,(y-2)+j) == 1)
 			{
-				c_out[i][j] = img->data[(x-2)+i][(y-2)+j];
+				c_out[i][j] = img->data[(x-2)+i][(y-2)+j][color];
 			}
 			else
 			{
@@ -226,7 +226,7 @@ char isInImage(ppmimg *img, int n, int m){
 
 /* 
  */
-char findNearestPixel(ppmimg *img, int n, int m, color){
+char findNearestPixel(ppmimg *img, int n, int m, int color){
 	// left side
 	if (n < 0)
 	{
