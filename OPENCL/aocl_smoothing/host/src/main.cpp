@@ -5,6 +5,8 @@
 #include <string.h>
 #include "CL/opencl.h"
 #include "AOCL_Utils.h"
+#include "ppm.h"
+#include "filter.h"
 
 using namespace aocl_utils;
 
