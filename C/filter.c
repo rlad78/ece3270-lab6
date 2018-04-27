@@ -185,7 +185,7 @@ float ** matrix_char2float(char **CM){
 		FM[i] = (float*) malloc(sizeof(float)*5);
 		for (j = 0; j < 5; j++)
 		{
-			FM[i][j] = (float)CM[i][j];
+			FM[i][j] = (float)(unsigned char)CM[i][j];
 		}
 	}
 
@@ -359,11 +359,11 @@ void matrix_free_FM(float **FM){
 /* 
  */
 char value_float2char(float f){
-	if (f >= 255)
+	if (f >= 255.0)
 	{
 		return 255;
 	}
-	else if (f <= 0)
+	else if (f <= 0.0)
 	{
 		return 0;
 	}
