@@ -37,7 +37,7 @@ void run();
 void cleanup();
 
 // Entry point.
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
 	test = false;
 
   	// Initialize the problem data.

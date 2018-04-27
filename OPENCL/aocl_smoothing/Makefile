@@ -13,7 +13,7 @@
 
 
 # Creating a static library
-TARGET = bitpair
+TARGET = smoothing
 
 # Where is the Altera SDK for OpenCL software?
 ifeq ($(wildcard $(ALTERAOCLSDKROOT)),)
@@ -24,7 +24,7 @@ $(error Set ALTERAOCLSDKROOT to the root directory of the Altera SDK for OpenCL 
 endif
 
 # Libraries to use, objects to compile
-SRCS = main.cpp
+SRCS = main.cpp filter.c ppm.c
 SRCS_FILES = $(foreach F, $(SRCS), host/src/$(F))
 COMMON_FILES = ../common/src/AOCL_Utils.cpp
 

@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 	in_img = ppm_read(argv[1]);
 	out_img = ppm_copy(in_img);
 
-	filter_image(out_img,GAUSS1);
+	filter_image(out_img,SHARPEN);
 
 	ppm_write(out_img,argv[2]);
 
