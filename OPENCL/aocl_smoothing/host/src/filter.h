@@ -22,5 +22,7 @@ enum filter
 
 // functions
 void filter_image(ppmimg *img, enum filter ftr);
+char isInImage(ppmimg *img, int n, int m);;
+char findNearestPixel(ppmimg *img, int n, int m, int color);
 
 #endif

@@ -126,7 +126,7 @@ void filter_image(ppmimg *img, enum filter ftr){
 		{
 			for (k = 0; k < 3; k++)
 			{
-				c_matrix = matrix_get_image_nibble(img_copy,i,j,k);
+				c_matrix = matrix_get_image_nibble(img_copy,j,i,k);
 				f_matrix = matrix_char2float(c_matrix);
 				matrix_free_CM(c_matrix);
 				img->data[i][j][k] = value_float2char(MOD_ARR[ftr]*matrix_convolude(f_matrix, MASK_ARR[ftr]));
@@ -221,13 +221,13 @@ char ** matrix_get_image_nibble(ppmimg *img, int x, int y, int color){
 		c_out[i] = (char*) malloc(sizeof(char)*5);
 		for (j = 0; j < 5; j++)
 		{
-			if(isInImage(img,(x-2)+i,(y-2)+j) == 1)
+			if(isInImage(img,(x-2)+j,(y-2)+i) == 1)
 			{
-				c_out[i][j] = img->data[(x-2)+i][(y-2)+j][color];
+				c_out[i][j] = img->data[(y-2)+i][(x-2)+j][color];
 			}
 			else
 			{
-				c_out[i][j] = findNearestPixel(img,(x-2)+i,(y-2)+j,color);
+				c_out[i][j] = findNearestPixel(img,(y-2)+i,(x-2)+j,color);
 			}
 		}
 	}
