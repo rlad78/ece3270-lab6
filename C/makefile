@@ -3,7 +3,7 @@ DEPS = ppm.h filter.h
 OBJS = ppm.o test.o filter.o
 CFLAGS = 
 
-default: run clean
+default: run
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
