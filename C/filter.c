@@ -3,7 +3,7 @@
 #include "ppm.h"
 
 // private function prototypes
-float matrix_convolude(float **m1, float **m2);
+float matrix_convolude(float **m1, const float m2[5][5]);
 void matrix_multiply_constant(float ***FM, float f);
 float ** matrix_char2float(char **CM);
 char ** matrix_float2char(float **FM);
@@ -114,25 +114,28 @@ const float MOD_ARR[8] = {
  */
 void filter_image(ppmimg *img, enum filter ftr){
 	int i,j,k;
-	ppmimg *img_filtered;
+	ppmimg *img_copy;
 	float **f_matrix;
 	char **c_matrix;
 
-	img_filtered = ppm_copy(img);
+	img_copy = ppm_copy(img);
 
-	for (i = 0; i < img_filtered->height; i++)
+	for (i = 0; i < img->height; i++)
 	{
-		for (j = 0; j < img_filtered->width; j++)
+		for (j = 0; j < img->width; j++)
 		{
 			for (k = 0; k < 3; k++)
 			{
-				c_matrix = matrix_get_image_nibble(img,j,i,k);
+				c_matrix = matrix_get_image_nibble(img_copy,j,i,k);
 				f_matrix = matrix_char2float(c_matrix);
 				matrix_free_CM(c_matrix);
-				
+				img->data[i][j][k] = matrix_convolude(f_matrix, MASK_ARR[ftr]);
+
 			}
 		}
 	}
+
+	ppm_free(img_copy);
 }
 
 // #######################
@@ -141,7 +144,7 @@ void filter_image(ppmimg *img, enum filter ftr){
 
 /* 
  */
-float matrix_convolude(float **m1, float **m2){
+float matrix_convolude(float **m1, const float m2[5][5]){
 	int i,j;
 	float sum = 0;
 
