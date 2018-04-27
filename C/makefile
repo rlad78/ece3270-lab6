@@ -1,7 +1,7 @@
 CC=gcc
 DEPS = ppm.h filter.h
 OBJS = ppm.o test.o filter.o
-CFLAGS = 
+CFLAGS = -g
 
 default: run
 

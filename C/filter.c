@@ -239,7 +239,7 @@ char ** matrix_get_image_nibble(ppmimg *img, int x, int y, int color){
 /* 
  */
 char isInImage(ppmimg *img, int n, int m){
-	if (n >= 0 && n < img->width && m >= 0 && n < img->height)
+	if (n >= 0 && n <= img->width-1 && m >= 0 && m <= img->height-1)
 	{
 		return 1;
 	}
@@ -295,7 +295,7 @@ char findNearestPixel(ppmimg *img, int n, int m, int color){
 	// bottom
 	else
 	{
-		return img->data[img->height][n][color];
+		return img->data[img->height-1][n][color];
 	}
 
 }
