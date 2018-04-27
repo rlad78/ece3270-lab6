@@ -277,7 +277,7 @@ char findNearestPixel(ppmimg *img, int n, int m, int color){
 			return img->data[0][img->width-1][color];
 		}
 		// right-bottom-corner
-		else if (m > img->height)
+		else if (m > img->height-1)
 		{
 			return img->data[img->height-1][img->width-1][color];
 		}
