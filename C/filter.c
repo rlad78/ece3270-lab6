@@ -101,9 +101,9 @@ const float MOD_ARR[8] = {
 	1,
 	1,
 	1,
-	1/9,
-	1/16,
-	1/256
+	1/9.0,
+	1/16.0,
+	1/256.0
 };
 
 // ######################
@@ -126,10 +126,10 @@ void filter_image(ppmimg *img, enum filter ftr){
 		{
 			for (k = 0; k < 3; k++)
 			{
-				c_matrix = matrix_get_image_nibble(img_copy,j,i,k);
+				c_matrix = matrix_get_image_nibble(img_copy,i,j,k);
 				f_matrix = matrix_char2float(c_matrix);
 				matrix_free_CM(c_matrix);
-				img->data[i][j][k] = matrix_convolude(f_matrix, MASK_ARR[ftr]);
+				img->data[i][j][k] = value_float2char(MOD_ARR[ftr]*matrix_convolude(f_matrix, MASK_ARR[ftr]));
 
 			}
 		}
