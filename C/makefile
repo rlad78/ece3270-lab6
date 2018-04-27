@@ -1,9 +1,9 @@
 CC=gcc
-DEPS = ppm.h
-OBJS = ppm.o test.o
-CFLAGS = 
+DEPS = ppm.h filter.h
+OBJS = ppm.o test.o filter.o
+CFLAGS = -g
 
-default: run clean
+default: run
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
